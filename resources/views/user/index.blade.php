@@ -87,7 +87,11 @@ https://templatemo.com/tm-558-klassy-cafe
                                 @if (Route::has('login'))
                                  <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                 @auth
-                                    <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
+                                    <li>
+                                        <x-app-layout>
+  
+                                        </x-app-layout>
+                                    </li>
                                 @else
                                    <li> <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
 
@@ -99,9 +103,9 @@ https://templatemo.com/tm-558-klassy-cafe
                                 @endif
                             </li>
                         </ul>        
-                        <a class='menu-trigger'>
+                        {{-- <a class='menu-trigger'>
                             <span>Menu</span>
-                        </a>
+                        </a> --}}
                         <!-- ***** Menu End ***** -->
                     </nav>
                 </div>
@@ -308,7 +312,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
-                            <img src="assets/images/chefs-01.jpg" alt="Chef #1">
+                            <img src="home_assests/assets/images/chefs-01.jpg" alt="Chef #1">
                         </div>
                         <div class="down-content">
                             <h4>Randy Walker</h4>
