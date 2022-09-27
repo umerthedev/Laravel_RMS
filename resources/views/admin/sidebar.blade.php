@@ -54,7 +54,7 @@
               <span class="nav-main-link-badge badge rounded-pill bg-primary">8</span>
             </a>
           </li>
-          <li class="nav-main-heading">Doctors Manu</li>
+          <li class="nav-main-heading">All Manu</li>
           <li class="nav-main-item">
             {{-- <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
               <i class="nav-main-link-icon fa fa-user-md"></i>
@@ -64,27 +64,27 @@
             </a> --}}
             {{-- <ul class="nav-main-submenu"> --}}
               <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                  <span class="nav-main-link-name">Add Speciality</span>
+                <a class="nav-main-link" href="{{url('useraction')}}">
+                  <span class="nav-main-link-name">Users</span>
                 </a>
               </li>
               <li class="nav-main-item">
                 <a class="nav-main-link" href="">                  
-                  <span class="nav-main-link-name">Add Doctors</span>
+                  <span class="nav-main-link-name">Food</span>
                   {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary"></span> --}}
                 </a>
               </li>
               <li class="nav-main-item">
                 <a class="nav-main-link" href="">
-                  <span class="nav-main-link-name">All Doctors</span>
+                  <span class="nav-main-link-name">Chefs</span>
                 </a>
               </li>             
             </ul>
           </li>         
-          <li class="nav-main-heading">Appointments</li>
+          <li class="nav-main-heading">Reservations</li>
           <a class="nav-main-link" href="">
             <i class="nav-main-link-icon fa fa-volume-control-phone"></i>
-            <span class="nav-main-link-name">All Appointments</span>
+            <span class="nav-main-link-name">All Reservations</span>
             {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary"></span> --}}
           </a>
           
