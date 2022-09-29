@@ -69,8 +69,14 @@
                 </a>
               </li>
               <li class="nav-main-item">
-                <a class="nav-main-link" href="">                  
-                  <span class="nav-main-link-name">Food</span>
+                <a class="nav-main-link" href="{{url('/showfood')}}">                  
+                  <span class="nav-main-link-name">Add Food Menu</span>
+                  {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary"></span> --}}
+                </a>
+              </li>
+              <li class="nav-main-item">
+                <a class="nav-main-link" href="{{url('/showAllfood')}}">                  
+                  <span class="nav-main-link-name">All Foods </span>
                   {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary"></span> --}}
                 </a>
               </li>

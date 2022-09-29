@@ -26,9 +26,23 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/redirect', [HomeController::class, 'admin']);
 
 
 Route::get('/useraction', [AdminController::class, 'useraction']);
 Route::get('/delete_u/{id}', [AdminController::class, 'delete_u']);
+
+
+// Food menu route
+Route::get('/showfood', [AdminController::class, 'showfood']);
+Route::post('/upload_foodmanu', [AdminController::class, 'upload_foodmanu']);
+Route::get('/showAllfood', [AdminController::class, 'showAllfood']);
+
+
+
+
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/redirect', [HomeController::class, 'admin']);
+
+
+
