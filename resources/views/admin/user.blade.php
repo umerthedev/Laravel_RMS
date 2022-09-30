@@ -110,7 +110,10 @@
                               </tr>
                               @endforeach
                             </tbody>
-                        </table>   
+                        </table> 
+                        <div class="dataTables_info">
+                          {!! $data->links() !!}
+                      </div>  
                     </div>  
                 </div>
             </div>

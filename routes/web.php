@@ -37,6 +37,12 @@ Route::get('/showfood', [AdminController::class, 'showfood']);
 Route::post('/upload_foodmanu', [AdminController::class, 'upload_foodmanu']);
 Route::get('/showAllfood', [AdminController::class, 'showAllfood']);
 
+Route::get('/edit_food/{id}', [AdminController::class, 'edit_food']);
+Route::post('/update_foodmanu/{id}', [AdminController::class, 'update_foodmanu']);
+Route::get('/delete_food/{id}', [AdminController::class, 'delete_food']);
+
+
+
 
 
 

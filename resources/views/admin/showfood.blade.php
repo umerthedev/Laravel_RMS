@@ -92,11 +92,11 @@
                     </td>
                     <td class="text-center">
                       <div class="btn-group">
-                        <a href="{{url('edit_docts',$food->id)}}">
+                        <a href="{{url('edit_food',$food->id)}}">
                         <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-toggle="tooltip" title="Edit">
                           <i class="fa fa-pencil-alt"></i>
                         </button></a>
-                        <a href="{{url('delete_docts',$food->id)}}" onclick="return confirm('Are You Sure Want To Delete This???')">
+                        <a href="{{url('delete_food',$food->id)}}" onclick="return confirm('Are You Sure Want To Delete This???')">
                         <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-toggle="tooltip" title="Delete">
                           <i class="fa fa-times"></i>
                         </button></a>
@@ -106,7 +106,11 @@
                   </tr>  
                   @endforeach              
                 </tbody>
+                
               </table>
+              <div class="dataTables_info">
+                {!! $data->links() !!}
+            </div>
             </div>
           </div>
           <!-- END Dynamic Table with Export Buttons -->
