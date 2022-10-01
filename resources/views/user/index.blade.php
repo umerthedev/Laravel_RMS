@@ -87,6 +87,18 @@
                 </div>
             </div>
         </div>
+        {{-- dismisable alert --}}
+        @if(session()->has('message'))
+
+           <div class="alert alert-success alert-dismissible fade show">
+               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+               {{session()->get('message')}}
+           
+           </div>
+
+
+        @endif
+        {{-- end dismisable alert --}}
     </header>
     <!-- ***** Header Area End ***** -->
 

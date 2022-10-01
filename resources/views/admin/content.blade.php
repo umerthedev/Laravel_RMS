@@ -40,12 +40,12 @@
           <i class="fa fa-level-up-alt fa-lg text-primary"></i>
         </div>
         <div class="fs-1 fw-bold"></div>
-        <div class="text-muted mb-3">Total Doctors</div>
+        <div class="text-muted mb-3">Total Food Item</div>
         
       </div>
       <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
         <a class="fw-medium" href="">
-          View All Doctors
+          View All Food Item
           <i class="fa fa-arrow-right ms-1 opacity-25"></i>
         </a>
       </div>
@@ -58,12 +58,12 @@
           <i class="fa fa-chart-line fa-lg text-primary"></i>
         </div>
         <div class="fs-1 fw-bold"></div>
-        <div class="text-muted mb-3">Total Specialist Category</div>
+        <div class="text-muted mb-3">Total Chefs</div>
         
       </div>
       <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
         <a class="fw-medium" href="">
-          View all Category
+          View all Chefs
           <i class="fa fa-arrow-right ms-1 opacity-25"></i>
         </a>
       </div>
@@ -76,12 +76,12 @@
           <i class="fa fa-wallet fa-lg text-primary"></i>
         </div>
         <div class="fs-1 fw-bold"></div>
-        <div class="text-muted mb-3">Total Appointments</div>
+        <div class="text-muted mb-3">Total Reservations</div>
         
       </div>
       <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
         <a class="fw-medium" href="">
-          View All Appointments
+          View All Reservations
           <i class="fa fa-arrow-right ms-1 opacity-25"></i>
         </a>
       </div>

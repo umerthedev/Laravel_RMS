@@ -52,3 +52,9 @@ Route::get('/redirect', [HomeController::class, 'admin']);
 
 
 
+Route::post('/reservation', [HomeController::class, 'reservation']);
+
+
+
+
+
