@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Food;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -75,5 +76,11 @@ class AdminController extends Controller
         $del = food::find($id);
         $del->delete();
         return redirect()->back()->with('message', 'Food Item Deleted Successfully');
+    }
+
+    public function reservation()
+    {
+        $data = reservation::paginate(5);
+        return view('admin.Allreservation',compact('data'));
     }
 }

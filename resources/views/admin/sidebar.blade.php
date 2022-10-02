@@ -88,7 +88,7 @@
             </ul>
           </li>         
           <li class="nav-main-heading">Reservations</li>
-          <a class="nav-main-link" href="">
+          <a class="nav-main-link" href="{{url('/showreservation')}}">
             <i class="nav-main-link-icon fa fa-volume-control-phone"></i>
             <span class="nav-main-link-name">All Reservations</span>
             {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary"></span> --}}
