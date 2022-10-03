@@ -44,6 +44,22 @@ Route::get('/delete_food/{id}', [AdminController::class, 'delete_food']);
 // show reservation route
 Route::get('/showreservation', [AdminController::class, 'reservation']); 
 
+//delete reservation route
+Route::get('/delete_reservation/{id}', [AdminController::class, 'delete_reservation']);
+
+//add chef route
+Route::get('/add_chef', [AdminController::class, 'add_chef']);
+//upload chef route
+Route::post('/upload_chef', [AdminController::class, 'upload_chef']);
+//show chef route
+Route::get('/chef_list', [AdminController::class, 'chef_list']);
+//edit chef route
+Route::get('/edit_chef/{id}', [AdminController::class, 'edit_chef']);
+//update chef route
+Route::post('/update_chef/{id}', [AdminController::class, 'update_chef']);
+//delete chef route
+Route::get('/delete_chef/{id}', [AdminController::class, 'delete_chef']);
+
 
 
 

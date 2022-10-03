@@ -54,7 +54,7 @@
               <span class="nav-main-link-badge badge rounded-pill bg-primary">8</span>
             </a>
           </li>
-          <li class="nav-main-heading">All Manu</li>
+          <li class="nav-main-heading">Users</li>
           <li class="nav-main-item">
             {{-- <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
               <i class="nav-main-link-icon fa fa-user-md"></i>
@@ -68,6 +68,7 @@
                   <span class="nav-main-link-name">Users</span>
                 </a>
               </li>
+              <li class="nav-main-heading">Food Menus</li>
               <li class="nav-main-item">
                 <a class="nav-main-link" href="{{url('/showfood')}}">                  
                   <span class="nav-main-link-name">Add Food Menu</span>
@@ -79,10 +80,16 @@
                   <span class="nav-main-link-name">All Foods </span>
                   {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary"></span> --}}
                 </a>
-              </li>
+              </li> 
+              <li class="nav-main-heading">Chef Options</li>             
               <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                  <span class="nav-main-link-name">Chefs</span>
+                <a class="nav-main-link" href="{{url('/add_chef')}}">
+                  <span class="nav-main-link-name">Add Chefs</span>
+                </a>
+              </li>             
+              <li class="nav-main-item">
+                <a class="nav-main-link" href="{{url('/chef_list')}}">
+                  <span class="nav-main-link-name">Chef Lists</span>
                 </a>
               </li>             
             </ul>

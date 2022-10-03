@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Food;
+use App\Models\Foodchef;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,8 @@ class HomeController extends Controller
     public function index()
     {
         $data = food::all();
-        return view('user.index',compact('data'));
+        $chef = foodchef::all();
+        return view('user.index',compact('data','chef'));
     }
     public function admin()
     {

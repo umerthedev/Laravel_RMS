@@ -48,11 +48,14 @@
       
 
       <!-- Main Container -->
-      <main id="main-container">        
+      <main id="main-container">                
         <div class="content">
-          <div class="d-md-flex justify-content-md-between align-items-md-center py-3 pt-md-3 pb-md-0 text-center text-md-start">
-            {{-- show Reservations table here  --}}
-            @if(session()->has('message'))  
+          <div class="d-md-flex justify-content-md-between align-items-md-center py-3 pt-md-3 pb-md-0 text-center text-md-start">          
+            <div class="content">
+                <!-- Elements -->
+                <div class="block block-rounded">                                
+                  <div class="block-content">
+                    @if(session()->has('message'))  
                    
                     <div class="alert alert-success alert-dismissible" role="alert">
                       <p class="mb-0">{{session()->get('message')}}!!!</p>
@@ -60,7 +63,7 @@
                       
                     </div>
         
-                    @endif                                    
+                    @endif                               
                 
                         <div>  
                             <h1 class="m-4 " style="text-align: center">Table reservation information</h1>      
@@ -93,14 +96,10 @@
                                 
                                 
                                 <td class="text-center">
-                                    <div class="btn-group">
-                                      <a href="{{url('edit_food',$d->id)}}">
-                                      <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-toggle="tooltip" title="Approved">
-                                        <i class="fa fa-pencil-alt"></i>
-                                      </button></a>
-                                      <a href="{{url('delete_food',$d->id)}}" onclick="return confirm('Are You Sure Want To Delete This???')">
-                                      <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-toggle="tooltip" title="Canceled">
-                                        <i class="fa fa-times"></i>
+                                    <div class="btn-group">                                      
+                                      <a href="{{url('delete_reservation',$d->id)}}" onclick="return confirm('Are You Sure Want To Delete This???')">
+                                      <button type="button" class="btn btn-sm btn-alt-secondary" data-bs-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-trash"></i>
                                       </button></a>
                                     </div>
                                   </td>     
