@@ -75,8 +75,8 @@
                     
                     <th>Food Name</th>
                     <th>Food Price</th>
-                    <th>Description</th>                    
-                    <th>image</th>
+                    <th style="text-align: center">Description</th>                    
+                    <th style="text-align: center">image</th>
                     <th>Action</th>
                     
                   </tr>

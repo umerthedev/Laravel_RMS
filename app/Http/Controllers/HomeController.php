@@ -18,11 +18,12 @@ class HomeController extends Controller
     public function admin()
     {
         $data=food::all();
+        $chef = foodchef::all();
         $usertype = Auth::user()->usertype;
         if ($usertype == '1') {
             return view('admin.home');
         } else {
-            return view('user.index',compact('data'));
+            return view('user.index',compact('data','chef'));
         }
     }
     public function reservation(Request $request)
