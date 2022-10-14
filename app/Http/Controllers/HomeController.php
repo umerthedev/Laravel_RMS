@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Food;
+use App\Models\Cart;
 use App\Models\Foodchef;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -13,7 +14,9 @@ class HomeController extends Controller
     {
         $data = food::all();
         $chef = foodchef::all();
-        return view('user.index',compact('data','chef'));
+        $user_id = Auth::id();
+        $count = cart::where('user_id', $user_id)->count();
+        return view('user.index',compact('data','chef','count'));
     }
     public function admin()
     {
@@ -23,7 +26,10 @@ class HomeController extends Controller
         if ($usertype == '1') {
             return view('admin.home');
         } else {
-            return view('user.index',compact('data','chef'));
+
+        $user_id = Auth::id();
+        $count = cart::where('user_id', $user_id)->count();
+            return view('user.index',compact('data','chef','count'));
         }
     }
     public function reservation(Request $request)
@@ -38,5 +44,25 @@ class HomeController extends Controller
         $reservation->message = $request->message;
         $reservation->save();
         return redirect()->back()->with('message', 'Reservation request sent successfully, we will confirm to you shortly by phone or email');
+    }
+    //add to cart
+    public function add_to_cart(Request $request, $id)
+    {
+        if(Auth::id())
+        {
+            $user_id = Auth::id();
+            $food_id = $id;
+            $quantity = $request->quantity;
+            $cart = new cart;
+            $cart->user_id = $user_id;
+            $cart->food_id = $food_id;
+            $cart->quantity = $quantity;
+            $cart->save();    
+            return redirect()->back()->with('message', 'Food added to cart successfully');
+        }
+        else
+        {
+            return redirect()->route('login');
+        }
     }
 }

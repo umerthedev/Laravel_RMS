@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     @include('user.css')
 
-    </head>
-    
-    <body>
-    
+</head>
+
+<body>
+
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -16,10 +16,10 @@
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
-    
-    
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -35,8 +35,8 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                           	
-                        <!-- 
+
+                            <!--
                             <li class="submenu">
                                 <a href="javascript:;">Drop Down</a>
                                 <ul>
@@ -47,7 +47,7 @@
                             </li>
                         -->
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
+                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
                             {{-- <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
@@ -57,46 +57,56 @@
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
                             </li> --}}
-                            
-                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+
+                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
+                            <li class="scroll-to-section">
+                                <a href="">cart
+                                    @auth
+                                        <span class="badge badge-pill bg-primary text-white">{{ $count }}</span>
+                                    @endauth
+                                    @guest
+                                        <span class="badge badge-pill bg-primary text-white">0</span>
+                                    @endguest
+                                </a>
+                            </li>
                             <li>
                                 @if (Route::has('login'))
-                                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                @auth
-                                    <li>
-                                        <x-app-layout>
-  
-                                        </x-app-layout>
-                                    </li>
-                                @else
-                                   <li> <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+                                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                                        @auth
+                                <li>
+                                    <x-app-layout>
+
+                                    </x-app-layout>
+                                </li>
+                            @else
+                                <li> <a href="{{ route('login') }}"
+                                        class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
 
                                 @if (Route::has('register'))
-                                    <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
+                                    <li><a href="{{ route('register') }}"
+                                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                    </li>
                                 @endif
-                                @endauth
-                                 </div>
-                                @endif
-                            </li>
-                        </ul>        
-                        {{-- <a class='menu-trigger'>
+                            @endauth
+                </div>
+                @endif
+                </li>
+                </ul>
+                {{-- <a class='menu-trigger'>
                             <span>Menu</span>
                         </a> --}}
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
+                <!-- ***** Menu End ***** -->
+                </nav>
             </div>
         </div>
+        </div>
         {{-- dismisable alert --}}
-        @if(session()->has('message'))
+        @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                {{ session()->get('message') }}
 
-           <div class="alert alert-success alert-dismissible fade show">
-               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-               {{session()->get('message')}}
-           
-           </div>
-
-
+            </div>
         @endif
         {{-- end dismisable alert --}}
     </header>
@@ -115,7 +125,7 @@
     <!-- ***** Menu Area Ends ***** -->
 
     <!-- ***** Chefs Area Starts ***** -->
-   @include('user.chefs')
+    @include('user.chefs')
     <!-- ***** Chefs Area Ends ***** -->
 
     <!-- ***** Reservation Us Area Starts ***** -->
@@ -124,28 +134,27 @@
 
     <!-- ***** Menu Area Starts ***** -->
     @include('user.menuArea')
-    <!-- ***** Chefs Area Ends ***** --> 
-    
+    <!-- ***** Chefs Area Ends ***** -->
+
     <!-- ***** Footer Start ***** -->
     @include('user.footer')
 
     @include('user.script')
     <script>
-
         $(function() {
             var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
+            $("p").click(function() {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function() {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
             });
         });
-  
     </script>
-  </body>
+</body>
+
 </html>

@@ -73,6 +73,9 @@ Route::get('/redirect', [HomeController::class, 'admin']);
 
 Route::post('/reservation', [HomeController::class, 'reservation']);
 
+//add_to-cart
+Route::post('/addcart/{id}', [HomeController::class, 'add_to_cart']);
+
 
 
 
