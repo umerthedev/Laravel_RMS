@@ -75,6 +75,8 @@ Route::post('/reservation', [HomeController::class, 'reservation']);
 
 //add_to-cart
 Route::post('/addcart/{id}', [HomeController::class, 'add_to_cart']);
+//show cart
+Route::get('/showcart/{id}', [HomeController::class, 'showcart']);
 
 
 

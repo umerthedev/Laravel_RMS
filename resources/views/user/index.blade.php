@@ -60,14 +60,19 @@
 
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
                             <li class="scroll-to-section">
-                                <a href="">cart
-                                    @auth
+
+
+                                @auth
+                                    <a href="{{ url('/showcart', Auth::user()->id) }}">cart
                                         <span class="badge badge-pill bg-primary text-white">{{ $count }}</span>
-                                    @endauth
-                                    @guest
+                                    </a>
+                                @endauth
+                                @guest
+                                    <a href="{{ url('login') }}">cart
                                         <span class="badge badge-pill bg-primary text-white">0</span>
-                                    @endguest
-                                </a>
+                                    </a>
+                                @endguest
+
                             </li>
                             <li>
                                 @if (Route::has('login'))

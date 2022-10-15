@@ -65,4 +65,16 @@ class HomeController extends Controller
             return redirect()->route('login');
         }
     }
+    //show cart
+    public function showcart(Request $request , $id)
+    {
+        $user_id = Auth::id();
+
+        $cart = cart::where('user_id',$id)->join('food','carts.food_id','food.id')->select('carts.*','food.name','food.price')->get();
+        // $cart = cart::where('user_id',$id)->join('food','carts.food_id', '=','food_id')->get();
+
+        $count = cart::where('user_id', $user_id)->count();
+        return view('user.showcart',compact('cart','count',));
+    }
+   
 }
