@@ -68,13 +68,22 @@ class HomeController extends Controller
     //show cart
     public function showcart(Request $request , $id)
     {
-        $user_id = Auth::id();
-
-        $cart = cart::where('user_id',$id)->join('food','carts.food_id','food.id')->select('carts.*','food.name','food.price','food.image')->get();
+        $user_id = Auth::id();       
+        $cart = cart::where('user_id',$id)
+        ->join('food','carts.food_id','food.id')
+        ->select('carts.*','food.name','food.price','food.image')
+        ->get();
         // $cart = cart::where('user_id',$id)->join('food','carts.food_id', '=','food_id')->get();
 
         $count = cart::where('user_id', $user_id)->count();
-        return view('user.showcart',compact('cart','count',));
+        return view('user.showcart',compact('cart','count'));
+    }
+    //delete cart
+    public function removecart($id)
+    {
+        $cart = cart::find($id);
+        $cart->delete();
+        return redirect()->back()->with('message', 'Food deleted from cart successfully');
     }
    
 }

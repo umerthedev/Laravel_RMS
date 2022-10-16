@@ -142,7 +142,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cart as $data)
+                                @forelse ($cart as $data)
                                     <tr>
                                         <td class="p-4">
                                             <div class="media align-items-center">
@@ -168,11 +168,16 @@
                                                 class="form-control text-center" value="{{ $data->quantity }}">
                                         </td>
                                         <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
-                                        <td class="text-center align-middle px-0"><a href="#"
+                                        <td class="text-center align-middle px-0"><a
+                                                href="{{ url('removecart', $data->id) }}"
                                                 class="shop-tooltip close float-none text-danger" title=""
                                                 data-original-title="Remove">×</a></td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center">No Data Found</td>
+                                @endforelse
+
                             </tbody>
                         </table>
                     </div>
