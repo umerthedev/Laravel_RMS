@@ -242,10 +242,16 @@
 
 
 
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6" style="padding-top: 10px">
                                         <fieldset>
                                             <button type="submit" id="form-submit" class="main-button-icon">Confirm
                                                 Order</button>
+
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-6" style="padding-top: 10px">
+                                        <fieldset>
+
                                             <button class="main-button-icon" id="close">Cancel</button>
                                         </fieldset>
                                     </div>
