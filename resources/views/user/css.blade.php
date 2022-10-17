@@ -25,6 +25,8 @@
 {{-- <link rel="stylesheet" href="home_assests/assets/css/lightbox.css"> --}}
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('home_assests/assets/css/lightbox.css') }}">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 //cart design
 <style>
     body {

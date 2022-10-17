@@ -128,7 +128,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered m-0">
-                            <a href="{{ URL::previous() }}" class="btn btn-danger mb-2">Back</a>
+                            <a href="{{ url('/') }}" class="btn btn-danger mb-2">Back</a>
                             <thead>
                                 <tr>
                                     <!-- Set columns width -->
@@ -201,22 +201,86 @@
                     </div>
 
                     <div class="float-right">
-                        <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Back to
-                            shopping</button>
-                        <button type="button" class="btn btn-lg btn-primary text-dark mt-2">Checkout</button>
+                        <button type="button" id="order" class="btn btn-lg btn-primary text-dark mt-2">Order
+                            Now</button>
                     </div>
-
                 </div>
             </div>
         </div>
 
+        <div class="card-body" id="appear" style="display: none;">
+            <div class="table-responsive">
+                <table class="table table-bordered m-0">
+
+                    <div class="col-lg-6">
+                        <div class="contact-form">
+                            <form id="" action="" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-12" style="padding-bottom: 20px">
+                                        <h4>Place Your Order Information</h4>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-12">
+                                        <fieldset>
+                                            <input name="name" type="text" id="name"
+                                                placeholder="Your Name*" required="">
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-lg-6 col-sm-12">
+                                        <fieldset>
+                                            <input name="phone" type="text" id="phone"
+                                                placeholder="Phone Number*" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12">
+                                        <fieldset>
+                                            <input name="address" type="text" id="address"
+                                                placeholder="Address" required="">
+                                        </fieldset>
+                                    </div>
+
+
+
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="main-button-icon">Confirm
+                                                Order</button>
+                                            <button class="main-button-icon" id="close">Cancel</button>
+                                        </fieldset>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </table>
+
+            </div>
+        </div>
     </div>
+
 
 
     <!-- ***** Footer Start ***** -->
     @include('user.footer')
 
     @include('user.script')
+
+    <script>
+        $(document).ready(function() {
+            $('#order').click(function() {
+                $('#appear').show();
+            });
+        });
+        $(document).ready(function() {
+            $('#close').click(function() {
+                $('#appear').hide();
+            });
+        });
+    </script>
+
+
     <script>
         $(function() {
             var selectedClass = "";
@@ -232,6 +296,3 @@
             });
         });
     </script>
-</body>
-
-</html>
