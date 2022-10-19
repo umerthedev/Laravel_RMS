@@ -79,6 +79,8 @@ Route::post('/addcart/{id}', [HomeController::class, 'add_to_cart']);
 Route::get('/showcart/{id}', [HomeController::class, 'showcart']);
 //delete cart
 Route::get('/removecart/{id}', [HomeController::class, 'removecart']);
+//order_now
+Route::post('/ordernow', [HomeController::class, 'ordernow']);
 
 
 

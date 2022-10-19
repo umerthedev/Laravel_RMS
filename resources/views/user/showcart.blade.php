@@ -121,6 +121,7 @@
     <div id="top">
         <div class="container px-3 my-5 clearfix">
             <!-- Shopping cart table -->
+
             <div class="card">
                 <div class="card-header">
                     <h2>Shopping Cart</h2>
@@ -138,45 +139,53 @@
                                     <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
                                     <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a
                                             href="#" class="shop-tooltip float-none text-light" title=""
-                                            data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                                            data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a>
+                                    </th>
                                 </tr>
                             </thead>
+
+
                             <tbody>
-                                @forelse ($cart as $data)
-                                    <tr>
-                                        <td class="p-4">
-                                            <div class="media align-items-center">
-                                                <img src="{{ url('/admin_assets/foodimage/' . $data->image) }}"
-                                                    class="d-block ui-w-40 ui-bordered mr-4" alt="">
-                                                <div class="media-body">
-                                                    <a href="#" class="d-block text-dark">{{ $data->name }}</a>
-                                                    {{-- <small>
-                                                        <span class="text-muted">Color:</span>
-                                                        <span
-                                                            class="ui-product-color ui-product-color-sm align-text-bottom"
-                                                            style="background:#e81e2c;"></span> &nbsp;
-                                                        <span class="text-muted">Size: </span> EU 37 &nbsp;
-                                                        <span class="text-muted">Ships from: </span> China
-                                                    </small> --}}
+                                <form action="{{ url('ordernow') }}" method="post">
+                                    @csrf
+
+
+
+                                    @forelse ($cart as $data)
+                                        <tr>
+                                            <td class="p-4">
+                                                <div class="media align-items-center">
+                                                    <img src="{{ url('/admin_assets/foodimage/' . $data->image) }}"
+                                                        class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                                    <div class="media-body">
+                                                        <a href="#"
+                                                            class="d-block text-dark">{{ $data->name }}</a>
+                                                        <input type="text" name="food_name[]"
+                                                            value="{{ $data->name }}" hidden>
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right font-weight-semibold align-middle p-4">
-                                            {{ $data->price }}
-                                        </td>
-                                        <td class="align-middle p-4"><input type="text"
-                                                class="form-control text-center" value="{{ $data->quantity }}">
-                                        </td>
-                                        <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
-                                        <td class="text-center align-middle px-0"><a
-                                                href="{{ url('removecart', $data->id) }}"
-                                                class="shop-tooltip close float-none text-danger" title=""
-                                                data-original-title="Remove">×</a></td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="text-center">No Data Found</td>
-                                @endforelse
+                                            </td>
+                                            <td class="text-right font-weight-semibold align-middle p-4">
+                                                <input type="text" name="price[]" value="{{ $data->price }}"
+                                                    hidden>
+                                                {{ $data->price }}
+                                            </td>
+                                            <td class="align-middle p-4"><input type="text"
+                                                    class="form-control text-center" value="{{ $data->quantity }}">
+                                                <input type="text" name="quantity[]" value="{{ $data->quantity }}"
+                                                    hidden>
+                                            </td>
+                                            <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
+                                            <td class="text-center align-middle px-0"><a
+                                                    href="{{ url('removecart', $data->id) }}"
+                                                    class="shop-tooltip close float-none text-danger" title=""
+                                                    data-original-title="Remove">×</a></td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">No Data Found</td>
+                                    @endforelse
 
                             </tbody>
                         </table>
@@ -214,56 +223,57 @@
 
                     <div class="col-lg-6">
                         <div class="contact-form">
-                            <form id="" action="" method="post">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-lg-12" style="padding-bottom: 20px">
-                                        <h4>Place Your Order Information</h4>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <fieldset>
-                                            <input name="name" type="text" id="name"
-                                                placeholder="Your Name*" required="">
-                                        </fieldset>
-                                    </div>
 
-                                    <div class="col-lg-6 col-sm-12">
-                                        <fieldset>
-                                            <input name="phone" type="text" id="phone"
-                                                placeholder="Phone Number*" required="">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-lg-12 col-sm-12">
-                                        <fieldset>
-                                            <input name="address" type="text" id="address"
-                                                placeholder="Address" required="">
-                                        </fieldset>
-                                    </div>
-
-
-
-                                    <div class="col-lg-6" style="padding-top: 10px">
-                                        <fieldset>
-                                            <button type="submit" id="form-submit" class="main-button-icon">Confirm
-                                                Order</button>
-
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-lg-6" style="padding-top: 10px">
-                                        <fieldset>
-
-                                            <button class="main-button-icon" id="close">Cancel</button>
-                                        </fieldset>
-                                    </div>
-
+                            <div class="row">
+                                <div class="col-lg-12" style="padding-bottom: 20px">
+                                    <h4>Place Your Order Information</h4>
                                 </div>
-                            </form>
+                                <div class="col-lg-6 col-sm-12">
+                                    <fieldset>
+                                        <input name="name" type="text" id="name" placeholder="Your Name*"
+                                            required="">
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-12">
+                                    <fieldset>
+                                        <input name="phone" type="text" id="phone"
+                                            placeholder="Phone Number*" required="">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12 col-sm-12">
+                                    <fieldset>
+                                        <input name="address" type="text" id="address" placeholder="Address"
+                                            required="">
+                                    </fieldset>
+                                </div>
+
+
+
+                                <div class="col-lg-6" style="padding-top: 10px">
+                                    <fieldset>
+                                        <button type="submit">Confirm
+                                            Order</button>
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-6" style="padding-top: 10px">
+                                    <fieldset>
+
+                                        <button class="main-button-icon" id="close"
+                                            type="button">Cancel</button>
+                                    </fieldset>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </table>
 
             </div>
         </div>
+        </form>
     </div>
 
 

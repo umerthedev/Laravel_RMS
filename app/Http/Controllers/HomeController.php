@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Food;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Foodchef;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -86,4 +87,42 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Food deleted from cart successfully');
     }
    
+    public function ordernow(Request $request)
+    {
+        // $user_id = Auth::id();
+        // $allcart = cart::where('user_id',$user_id)->get();
+        // foreach($allcart as $cart)
+        // {
+        //     $order = new order;
+        //     $order->user_id = $cart['name'];
+        //     $order->food_id = $cart['food_id'];
+        //     $order->quantity = $cart['quantity'];
+        //     // $order->status = "pending";
+        //     // $order->payment_method = $request->payment;
+        //     // $order->payment_status = "pending";
+        //     $order->address = $request->address;
+        //     $order->save();
+        //     cart::where('user_id',$user_id)->delete();
+        // }
+        // return redirect()->route('user.index')->with('message', 'Order placed successfully');
+
+        foreach($request->food_name as $key => $foodname)
+        {
+            $user_id = Auth::id();
+            $order = new order;
+            $order -> food_name = $foodname;
+            $order -> price = $request->price[$key];
+            $order -> quantity = $request->quantity[$key];
+            $order -> name = $request->name;
+            $order -> phone = $request->phone;
+            $order -> address = $request->address;
+            $order ->save();
+            cart::where('user_id',$user_id)->delete();
+
+        }
+       
+        
+        return redirect()->back()->with('message', 'Order placed successfully');
+
+    }
 }
