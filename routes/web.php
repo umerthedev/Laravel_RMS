@@ -59,6 +59,10 @@ Route::get('/edit_chef/{id}', [AdminController::class, 'edit_chef']);
 Route::post('/update_chef/{id}', [AdminController::class, 'update_chef']);
 //delete chef route
 Route::get('/delete_chef/{id}', [AdminController::class, 'delete_chef']);
+//show orders
+Route::get('/show_orders', [AdminController::class, 'show_orders']);
+//selete_orders
+Route::get('/delete_orders/{id}', [AdminController::class, 'delete_orders']);
 
 
 
