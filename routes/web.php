@@ -63,6 +63,8 @@ Route::get('/delete_chef/{id}', [AdminController::class, 'delete_chef']);
 Route::get('/show_orders', [AdminController::class, 'show_orders']);
 //selete_orders
 Route::get('/delete_orders/{id}', [AdminController::class, 'delete_orders']);
+//search
+Route::get('/search', [AdminController::class, 'search']);
 
 
 

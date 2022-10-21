@@ -71,6 +71,15 @@
                                 <div>
                                     <h1 class="m-4 " style="text-align: center">Customer Order information</h1>
 
+                                    {{-- <div class="block-content block-content-full">
+                                        <div class="form-outline mb-4">
+                                            <input placeholder="Search by name, email, phone, FB_ID Or IG_ID"
+                                                type="search" class="form-control" id="datatable-search-input">
+                                            <label class="form-label" for="datatable-search-input"></label>
+                                        </div>
+                                        <div id="datatable">
+                                        </div> --}}
+
                                     <table class="table table-bordered table-striped table-vcenter">
                                         <thead>
                                             <tr>
@@ -84,7 +93,7 @@
                                                 <th class="text-center">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="allcont">
                                             @forelse ($oreders as $or)
                                                 <tr>
                                                     <td>
@@ -112,13 +121,43 @@
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="5" class="text-center">No Data Found</td>
+                                                    <td colspan="8" style="text-align: center">No Data Found</td>
+                                                </tr>
                                             @endforelse
                                         </tbody>
+
+                                        <tbody id="tbody" class="searchdat"></tbody>
                                     </table>
-                                    <div class="dataTables_info">
-                                        {!! $oreders->links() !!}
-                                    </div>
+                                    <script type="text/javascript">
+                                        $('#datatable-search-input').on('keyup', function() {
+                                            $value = $(this).val();
+                                            if ($value) {
+                                                $('.allcont').hide();
+                                                $('.searchdat').show();
+
+                                            } else {
+                                                $('.allcont').show();
+                                                $('.searchdat').hide();
+                                            }
+
+                                            $.ajax({
+                                                type: 'get',
+                                                url: '{{ URL::to('search') }}',
+                                                data: {
+                                                    'search': $value
+                                                },
+                                                success: function(data) {
+
+                                                    if (data != "") {
+                                                        $('#tbody').html(data);
+                                                    } else {
+                                                        $('#tbody').text("Data not found !!!");
+                                                    }
+                                                }
+                                            });
+                                        })
+                                    </script>
+
 
                                 </div>
                             </div>

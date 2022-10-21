@@ -151,7 +151,7 @@ class AdminController extends Controller
     }
     public function show_orders()
     {
-        $oreders = order::paginate(5);
+        $oreders = order::all();
         return view('admin.show_orders',compact('oreders'));
     }
     public function delete_orders($id)
@@ -159,5 +159,31 @@ class AdminController extends Controller
         $del = order::find($id);
         $del->delete();
         return redirect()->back()->with('message', 'Order Deleted Successfully');
+    }
+    //search
+    public function search(Request $request)
+    {
+        $output = '';        
+        $order = order::where('name','like','%'.$request->search.'%')->orWhere('address','like','%'.$request->search.'%')->orWhere('phone','like','%'.$request->search.'%')->orWhere('food_name','like','%'.$request->search.'%')->get();
+        
+        foreach ($order as $searchorder) {
+            $output.=             
+            '<tr>
+            <td>'.$searchorder->name.'</td>
+            <td>'.$searchorder->phone.'</td>
+            <td>'.$searchorder->address.'</td>
+            <td>'.$searchorder->food_name.'</td>
+            <td>'.$searchorder->price.'</td>
+            <td>'.$searchorder->quantity.'</td>
+            <td>'.$searchorder->price * $searchorder->quantity .'</td>
+            
+            <td>
+            
+            <a href="'.url('delete_orders',$searchorder->id).'" class="btn btn-danger">Delete</a>
+            </td>                       
+            </tr>';
+        }
+
+        return response()->json($output);
     }
 }
