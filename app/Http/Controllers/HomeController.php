@@ -13,11 +13,20 @@ class HomeController extends Controller
 {
     public function index()
     {
+        if(Auth::id())
+        {
+            return redirect()->back();
+        }
+        else
+        {
+
+        
         $data = food::all();
         $chef = foodchef::all();
         $user_id = Auth::id();
         $count = cart::where('user_id', $user_id)->count();
         return view('user.index',compact('data','chef','count'));
+    }
     }
     public function admin()
     {
@@ -69,15 +78,23 @@ class HomeController extends Controller
     //show cart
     public function showcart(Request $request , $id)
     {
+        
+
+        if(Auth::id() == $id)
+        {
         $user_id = Auth::id();       
         $cart = cart::where('user_id',$id)
         ->join('food','carts.food_id','food.id')
         ->select('carts.*','food.name','food.price','food.image')
         ->get();
         // $cart = cart::where('user_id',$id)->join('food','carts.food_id', '=','food_id')->get();
-
-        $count = cart::where('user_id', $user_id)->count();
+        $count = cart::where('user_id', $user_id)->count();        
         return view('user.showcart',compact('cart','count'));
+        }
+        else
+        {
+            return redirect()->back();
+        }
     }
     //delete cart
     public function removecart($id)

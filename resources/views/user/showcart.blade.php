@@ -173,10 +173,12 @@
                                             </td>
                                             <td class="align-middle p-4"><input type="text"
                                                     class="form-control text-center" value="{{ $data->quantity }}">
-                                                <input type="text" name="quantity[]" value="{{ $data->quantity }}"
+                                                <input type="number" name="quantity[]" value="{{ $data->quantity }}"
                                                     hidden>
                                             </td>
-                                            <td class="text-right font-weight-semibold align-middle p-4">$115.1</td>
+                                            <td class="text-right font-weight-semibold align-middle p-4">
+                                                {{ $data->quantity * $data->price }}
+                                            </td>
                                             <td class="text-center align-middle px-0"><a
                                                     href="{{ url('removecart', $data->id) }}"
                                                     class="shop-tooltip close float-none text-danger" title=""
@@ -200,7 +202,7 @@
                         <div class="d-flex">
                             <div class="text-right mt-4 mr-5">
                                 <label class="text-muted font-weight-normal m-0">Discount</label>
-                                <div class="text-large"><strong>$20</strong></div>
+                                <div class="text-large"><strong>$</strong></div>
                             </div>
                             <div class="text-right mt-4">
                                 <label class="text-muted font-weight-normal m-0">Total price</label>

@@ -29,6 +29,9 @@
                         <!-- ***** Logo Start ***** -->
                         <a href="{{ url('/') }}" class="logo">
                             <img src="home_assests/assets/images/klassy-logo.png" align="klassy cafe html template">
+                            <a class="menu-trigger">
+                                <span>Menu</span>
+                            </a>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
