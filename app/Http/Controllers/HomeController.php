@@ -15,18 +15,19 @@ class HomeController extends Controller
     {
         if(Auth::id())
         {
-            return redirect()->back();
+            // return redirect()->back();
+            // return view('dashboard');
+            return $this->admin();
+
         }
         else
-        {
-
-        
+        {        
         $data = food::all();
         $chef = foodchef::all();
         $user_id = Auth::id();
         $count = cart::where('user_id', $user_id)->count();
         return view('user.index',compact('data','chef','count'));
-    }
+        }
     }
     public function admin()
     {

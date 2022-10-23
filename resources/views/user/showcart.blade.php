@@ -30,6 +30,9 @@
                         <a href="{{ url('/') }}" class="logo">
                             <img src="{{ url('home_assests/assets/images/klassy-logo.png') }}"
                                 align="klassy cafe html template">
+                            <a class="menu-trigger">
+                                <span>Menu</span>
+                            </a>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -149,7 +152,9 @@
                                 <form action="{{ url('ordernow') }}" method="post">
                                     @csrf
 
-
+                                    @php
+                                        $totalprice = 0;
+                                    @endphp
 
                                     @forelse ($cart as $data)
                                         <tr>
@@ -184,13 +189,18 @@
                                                     class="shop-tooltip close float-none text-danger" title=""
                                                     data-original-title="Remove">×</a></td>
                                         </tr>
+                                        @php
+                                            $totalprice = $totalprice + $data->quantity * $data->price;
+                                        @endphp
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="text-center">No Data Found</td>
+                                            <td colspan="5" class="text-center">No food added in cart</td>
+                                        </tr>
                                     @endforelse
 
                             </tbody>
                         </table>
+                        <?php $deliverycharge = 50; ?>
                     </div>
                     <!-- / Shopping cart table -->
 
@@ -201,21 +211,36 @@
                         </div>
                         <div class="d-flex">
                             <div class="text-right mt-4 mr-5">
-                                <label class="text-muted font-weight-normal m-0">Discount</label>
-                                <div class="text-large"><strong>$</strong></div>
+                                <label class="text-muted font-weight-normal m-0">Delivery charge </label>
+                                <div class="text-large"><strong>50 tk </strong></div>
                             </div>
                             <div class="text-right mt-4">
                                 <label class="text-muted font-weight-normal m-0">Total price</label>
-                                <div class="text-large"><strong>$1164.65</strong></div>
+                                @if ($totalprice)
+                                    <div class="text-large">
+                                        <strong> TK {{ $totalprice + $deliverycharge }}
+                                        </strong>
+                                    @else
+                                        <div class="text-large"><strong> TK 0
+                                            </strong>
+                                        </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-
+                </div>
+                @if ($totalprice)
                     <div class="float-right">
                         <button type="button" id="order" class="btn btn-lg btn-primary text-dark mt-2">Order
                             Now</button>
                     </div>
-                </div>
+                @else
+                    <div style="text-align: center" class="mb-4">
+                        <a href="{{ url('/') }}" class="btn btn-lg btn-primary text-dark "> Please Add
+                            food from
+                            menu</a>
+                    </div>
+                @endif
             </div>
         </div>
 
